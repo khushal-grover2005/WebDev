@@ -1,0 +1,42 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Center Align </title>
+    <style>
+        .container {
+            width: 1200px;
+            background-color: red;
+            margin: 0px auto;
+        }
+        .vertical-center
+        {
+            display: flex;
+            justify-content: center;
+            height: 100%; 
+            flex-direction: column;
+        }
+
+        .horizontal-center
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content
+        {
+            height: 500px;         
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="vertical-center">
+                <div class="horizontal-center">
+                    <h1>hello world</h1>
+                </div>
+            </div>    
+        </div>
+    </div>    
+</body> 

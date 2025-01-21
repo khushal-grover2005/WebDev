@@ -1,0 +1,60 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Grid</title>
+    <style>
+        .container 
+        {
+            width: 1200px;
+            margin: 0px auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 10px;
+            height:auto;
+        }
+        .left
+        {
+            background-color: red;
+            height:100%;
+        }
+        .right
+        {
+            background-color: blue;
+            height: 100%;
+            display:flex;
+        }
+        .contents
+        {
+            height: 100%;
+            padding-right: 25% ;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <center><h1>Left</h1></center></br>
+            <span><b> text text text text text text text text text text text text text text text</b><span>
+        </div>
+        <div class="right">
+            <div class="contents">
+                <div><h1>Col1</h1></div>
+                <div><h1>Col1</h1></div>
+                <div><h1>Col1</h1></div>
+            </div>
+            <div class="contents">
+                <div><h1>Col2</h1></div>
+                <div><h1>Col2</h1></div>
+                <div><h1>Col2</h1></div>
+            </div>
+            <div class="contents">
+                <div><h1>Col3</h1></div>
+                <div><h1>Col3</h1></div>
+                <div><h1>Col3</h1></div>
+            </div>
+
+        </div>
+    </div>
+</body>    
