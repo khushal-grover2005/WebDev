@@ -12,9 +12,6 @@ app.post('/sum',function(req,res)
     res.json({
         "the sum is":a+b
     })
-
-
-    
 })
 
 app.listen(4000);
