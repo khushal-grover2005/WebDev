@@ -1,7 +1,11 @@
 let users=
 [
     {
+<<<<<<< HEAD
         name: "harkirat",
+=======
+        name: "john",
+>>>>>>> daf7cf3 (Initial commit with week-1 and week-2)
         kidney:
         [
             {
@@ -18,6 +22,11 @@ let users=
 const express=require("express");
 const app=express();
 
+<<<<<<< HEAD
+=======
+app.use(express.json());
+
+>>>>>>> daf7cf3 (Initial commit with week-1 and week-2)
 app.get('/',function(req,res)
     {
         let johnkidney=users[0].kidney;
@@ -38,6 +47,7 @@ app.get('/',function(req,res)
         );
     }
 )
+<<<<<<< HEAD
 app.use(express.json());
 app.post('/',function(req,res)
     {
@@ -55,6 +65,27 @@ app.post('/',function(req,res)
         )
     }
 )
+=======
+
+app.post('/', function (req, res) {
+    console.log(req.body); // This will log the incoming request body
+    const isHealthy = req.body.isHealthy;
+
+    if (typeof isHealthy !== 'boolean') {
+        return res.status(400).json({
+            msg: "Invalid data. 'isHealthy' must be a boolean."
+        });
+    }
+
+    users[0].kidney.push({
+        healthy: isHealthy
+    });
+
+    res.json({
+        msg: "done"
+    });
+});
+>>>>>>> daf7cf3 (Initial commit with week-1 and week-2)
 
 app.put('/',function(req,res)
     {
@@ -71,18 +102,34 @@ app.put('/',function(req,res)
 app.delete('/',function(req,res)
     {
         let newarr=[];
+<<<<<<< HEAD
 
         const johnkidney=users[0].kidney;
 
+=======
+        
+        let johnkidney=users[0].kidney;
+        
+>>>>>>> daf7cf3 (Initial commit with week-1 and week-2)
         for(let i=0;i<johnkidney.length;i++)
         {
             if(johnkidney[i].healthy==true)
                 newarr.push(johnkidney[i]);
         }
+<<<<<<< HEAD
         johnkidney=newarr;
+=======
+        users[0].kidney=newarr;
+>>>>>>> daf7cf3 (Initial commit with week-1 and week-2)
         res.json({});
 
     }
 )
 
+<<<<<<< HEAD
 app.listen(3000);
+=======
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+>>>>>>> daf7cf3 (Initial commit with week-1 and week-2)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>posts</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        linked
+        <button onclick="add()">add data</button>
+        <div id="posts"></div>
+    </body>
+
+    <script>
+        async function add()
+        {
+            try {
+                const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1');
+                const data = await response.data;
+                const d = document.createElement("div");
+                d.innerHTML = data.body;
+                document.getElementById("posts").appendChild(d);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+    </script>
+</html>
