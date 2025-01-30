@@ -1,13 +1,14 @@
+const bodyParser = require('body-parser');
 const express = require('express');
-const path = require('path');
 const app = express();
 
-app.use(express.json())
+
+
+app.use(bodyParser())
 
 app.post('/sum',function(req,res)
 {
-    const a=parseInt(req.query.a);
-    const b=parseInt(req.query.b);
+    const {a,b}= req.body;
 
     res.json({
         "the sum is":a+b

@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta  name="viewport" content="width=device-width, initial-scale=1">
+        <title> signin </title>
+   
+    </head>
+    <body>
+    <div class="container">
+        <h2>Sign In</h2>
+        <form onsubmit="event.preventDefault(); signIn();">
+            <label >Username:</label>
+            <input type="text" id="u" name="username" required>
+            
+            <label >Password:</label>
+            <input type="password" id="p" name="password" required>
+            
+            <button type="submit">Sign in</button>
+        </form>
+        <p id="status"></p>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #17161b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #status {
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+    <script>
+        async function signIn() {
+            const username=document.getElementById("u").value;
+            const password=document.getElementById("p").value;
+            const response = await fetch('http://localhost:4000/signing_in', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            });
+            const data = await response.json();
+            if (response.ok) {
+                const meResponse = await fetch('http://localhost:4000/me', {
+                    method: 'GET',
+                    headers: {
+                        'authorization': data.token
+                    }
+                });
+                const meData = await meResponse.json();
+                if (meResponse.ok) {
+                    document.getElementById('status').innerHTML = "Sign in successful!";
+                    setTimeout(() => {
+                window.location.href = 'http://localhost:3000/logout.html';
+            }, 2000);
+                } else {
+                    document.getElementById('status').innerHTML = "Failed to fetch user data.";
+                }
+            } else {
+                document.getElementById('status').innerHTML = "either sign up or enter correct credentials";
+            }
+        }
+    </script>
+    </body>
+</html>

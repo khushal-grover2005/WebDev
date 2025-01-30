@@ -1,14 +1,14 @@
 <html>
     <head>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
-            function Add(){
+            async function Add(){
                 const a = document.getElementById('a').value;
                 const b = document.getElementById('b').value;
-                axios.post(`http://localhost:3000/sum`,{
+                const res=await fetch(`http://localhost:4000/sum`,{
                     a:a,
                     b:b
-                })                    
+                }) 
+                console.log(res);                   
             }
         </script>
     </head>
